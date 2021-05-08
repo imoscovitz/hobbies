@@ -50,7 +50,7 @@ def get_user(hobbies):
 
 def predict(model, user_df):
   preds = model.transform(user_df)[0]
-  res = sorted(list(zip(user.columns, preds)), key=lambda x:x[1], reverse=True)
+  res = sorted(list(zip(user_df.columns, preds)), key=lambda x:x[1], reverse=True)
   return res
 
 def predict_output(model, user_df):
