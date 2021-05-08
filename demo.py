@@ -10,7 +10,6 @@ from sklearn.impute import SimpleImputer, KNNImputer
 def run(df):
 
     # Set up data
-    pd.set_option('max_columns', 300)
     col_cutoff = df.columns.tolist().index('Ageing')
     df = df[df.columns[:col_cutoff]]
     imp = KNNImputer(n_neighbors=5)
@@ -27,7 +26,7 @@ def get_hates_likes(choices):
   clear_output()
   done = False
   while not done:
-    hates = input(f'Enter a few things you HATE from the following list, separated by commas. \n\n {X_train.columns}\n')
+    hates = input(f'Enter a few things you HATE from the following list, separated by commas. \n\n {choices}\n')
     likes = input(f'\nNow enter a few things you LIKE ')
     hates = [item.strip() for item in hates.split(',')]
     likes = [item.strip() for item in likes.split(',')]
