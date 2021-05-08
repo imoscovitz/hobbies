@@ -1,3 +1,28 @@
+from IPython.display import clear_output
+import requests
+import numpy as np
+import pandas as pd
+
+from sklearn.neighbors import NearestNeighbors
+from sklearn.impute import SimpleImputer, KNNImputer
+
+
+def run(df):
+
+    # Set up data
+    pd.set_option('max_columns', 300)
+    col_cutoff = df.columns.tolist().index('Ageing')
+    df = df[df.columns[:col_cutoff]]
+    imp = KNNImputer(n_neighbors=5)
+    X_train = pd.DataFrame(data=imp.fit_transform(df), columns=df.columns)
+
+    # Fit model
+    imp.fit(X_train)
+
+    # Run demo
+    user = get_user(df.columns)
+    predict_output(imp, user)
+
 def get_hates_likes(choices):
   clear_output()
   done = False
