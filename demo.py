@@ -17,7 +17,7 @@ def run(df):
 
     # Fit model
     print('training model...')
-    X_train = normalize_scale(X_train)
+    #X_train = normalize_scale(X_train)
     #X_train = normalize(X_train)
     imp = KNNImputer(n_neighbors=5)
     imp.fit(X_train)
